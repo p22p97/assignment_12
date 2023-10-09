@@ -1,0 +1,27 @@
+{
+  "name": "assignment_to_do",
+  "version": "1.0.0",
+  "description": "Assignment by pallvi",
+  "main": "index.js",
+  "scripts": {
+    "test": "node index.js",
+    "local": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/p22p97/Assignment_delhi.git"
+  },
+  "author": "Pallvi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/p22p97/Assignment_delhi/issues"
+  },
+  "homepage": "https://github.com/p22p97/Assignment_delhi#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "mysql": "^2.18.1",
+    "nodemon": "^3.0.1",
+    "request": "^2.88.2",
+    "request-promise": "^4.2.6"
+  }
+}
