@@ -2,39 +2,8 @@
 <html>
 
 <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
-    <script>
-        function signupfunc() {    
-            const apiUrl = 'http://localhost:2000/login/signup';
-    
-            const requestData = {
-                fullname: document.getElementById("fullname").value,
-                username: document.getElementById("username").value,
-                password: document.getElementById("password").value
-            };
-    
-            fetch(apiUrl, {
-                // mode:"no-cors",
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(requestData)
-            })
-                .then(response => response.json())
-                .then(data => {
-                    console.log(data.Success)
-                    if(data.Success==true){
-                        location.replace("login.html")
-                    }else{
-                        alert("Username already exist in the system")
-                    }
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                });
-        }
-    </script>
     <style>
         @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
 
@@ -63,16 +32,6 @@
             height: 400px;
             background-color: #ffffff;
             padding: 10px 30px;
-        }
-
-        .card_title {
-            text-align: center;
-            padding: 10px;
-        }
-
-        .card_title h1 {
-            font-size: 26px;
-            font-weight: bold;
         }
 
         .form input {
@@ -106,17 +65,13 @@
 <body>
     <div class="container">
         <div class="card">
-            <div class="card_title">
-                <h1>Create Account</h1>
-                <span>Already have an account? <a href="login.html">LOGIN</a></span>
-            </div>
             <div class="form">
-                <!-- <form action="./login.html" method="post"> -->
+                <form action="/register" method="post">
                     <input type="text" name="fullname" placeholder="fullname" id="fullname" required />
                     <input type="text" name="username" id="username" placeholder="UserName" required />
                     <input type="password" name="password" placeholder="Password" id="password" required />
-                    <button id="b1" onclick="signupfunc()">Sign Up</button>
-                <!-- </form> -->
+                    <button>Sign Up</button>
+                </form>
             </div>
         </div>
     </div>
