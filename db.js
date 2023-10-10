@@ -10,4 +10,4 @@ conn.connect((err) => {
     console.log("Connected to db");
 })
 
-module.exports={conn}
+module.exports = { conn }
