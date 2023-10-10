@@ -2,7 +2,39 @@
 <html>
 
 <head>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        function loginfunc() {
+
+            const requestData = {
+                username: document.getElementById("username").value,
+                password: document.getElementById("password").value
+            };
+
+            const apiUrl = `http://localhost:2000/login/login?username=${requestData.username}&password=${requestData.password}`;
+
+            fetch(apiUrl, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.Success == true) {
+                        // localStorage.clear();
+
+                        localStorage.setItem("token11", data.Token);
+                        localStorage.setItem("assignment_username", document.getElementById("username").value);
+                        location.replace("product.html")
+                    } else {
+                        alert("Username or password incorrect")
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        }
+    </script>
 
     <style>
         @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
@@ -29,7 +61,6 @@
             border-radius: 10px;
             box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.3);
             width: 400px;
-            height: 400px;
             background-color: #ffffff;
             padding: 10px 30px;
         }
@@ -66,12 +97,9 @@
     <div class="container">
         <div class="card">
             <div class="form">
-                <form action="/register" method="post">
-                    <input type="text" name="fullname" placeholder="fullname" id="fullname" required />
-                    <input type="text" name="username" id="username" placeholder="UserName" required />
-                    <input type="password" name="password" placeholder="Password" id="password" required />
-                    <button>Sign Up</button>
-                </form>
+                <input type="text" name="username" id="username" placeholder="UserName" required />
+                <input type="password" name="password" placeholder="Password" id="password" required />
+                <button id="b1" onclick="loginfunc()">LOGIN</button>
             </div>
         </div>
     </div>

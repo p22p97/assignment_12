@@ -4,15 +4,14 @@
 <head>
 
     <script>
-        function signupfunc() {    
+        function signupfunc() {
             const apiUrl = 'http://localhost:2000/login/signup';
-    
             const requestData = {
                 fullname: document.getElementById("fullname").value,
                 username: document.getElementById("username").value,
                 password: document.getElementById("password").value
             };
-    
+
             fetch(apiUrl, {
                 // mode:"no-cors",
                 method: 'POST',
@@ -23,10 +22,11 @@
             })
                 .then(response => response.json())
                 .then(data => {
-                    console.log(data.Success)
-                    if(data.Success==true){
-                        location.replace("login.html")
-                    }else{
+                    if (data.Success == true) {
+                        localStorage.setItem("token11", data.Token);
+                        localStorage.setItem("assignment_username", document.getElementById("username").value);
+                        location.replace("product.html")
+                    } else {
                         alert("Username already exist in the system")
                     }
                 })
@@ -112,10 +112,10 @@
             </div>
             <div class="form">
                 <!-- <form action="./login.html" method="post"> -->
-                    <input type="text" name="fullname" placeholder="fullname" id="fullname" required />
-                    <input type="text" name="username" id="username" placeholder="UserName" required />
-                    <input type="password" name="password" placeholder="Password" id="password" required />
-                    <button id="b1" onclick="signupfunc()">Sign Up</button>
+                <input type="text" name="fullname" placeholder="fullname" id="fullname" required />
+                <input type="text" name="username" id="username" placeholder="UserName" required />
+                <input type="password" name="password" placeholder="Password" id="password" required />
+                <button id="b1" onclick="signupfunc()">Sign Up</button>
                 <!-- </form> -->
             </div>
         </div>
