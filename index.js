@@ -1,11 +1,11 @@
 const express = require("express")
-const db=require("./db.js")
+const db = require("./db.js")
 
 const app = express()
 db.conn
 
 app.use(express.urlencoded())
-app.use(express.json({"limit":'200mb'}))
+app.use(express.json({ "limit": '200mb' }))
 
 
 require("./router.js")(app)
